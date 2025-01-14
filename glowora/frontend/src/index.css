@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Outfit:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Outfit', 'Nunito', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Josefin Sans', system-ui, sans-serif;
+  }
+
+  body {
+    @apply bg-white text-gray-900 min-h-screen;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .btn-primary {
+    @apply bg-iris hover:bg-slate-blue text-white font-semibold py-2 px-4 rounded-md transition-colors duration-200 font-outfit;
+  }
+  
+  .btn-secondary {
+    @apply bg-apricot hover:bg-misty-rose text-tekhelet font-semibold py-2 px-4 rounded-md transition-colors duration-200 font-outfit;
+  }
+
+  .nav-link {
+    @apply font-josefin font-medium;
+  }
+
+  .footer-logo {
+    @apply relative flex items-center justify-center;
+  }
+
+  .footer-logo::before {
+    @apply content-[''] absolute inset-0 bg-iris/20 rounded-full blur-lg;
+    animation: breathe 4s ease-in-out infinite;
+  }
+
+  .footer-logo img {
+    @apply relative z-10 p-1.5;
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  .navbar-glow-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      #7063C4 25%,
+      #6050C5 50%,
+      #7449A9 75%,
+      transparent 100%
+    );
+    opacity: 0.7;
+    animation: glowLine 4s ease-in-out infinite;
+  }
+
+  @keyframes glowLine {
+    0% {
+      background-position: -200% center;
+      filter: blur(0px);
+    }
+    50% {
+      filter: blur(1px);
+    }
+    100% {
+      background-position: 200% center;
+      filter: blur(0px);
+    }
+  }
+
+  .navbar-container {
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(0.92);
+    opacity: 0.25;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.45;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-iris rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-blue;
+}
+
+/* Hero Section Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-fade-in-delay {
+  animation: fadeIn 1s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-delay-2 {
+  animation: fadeIn 1s ease-out 0.6s forwards;
+  opacity: 0;
+}
+
+/* Hero Section Styles */
+.hero-video-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+}
+
+/* Import Montserrat font for hero section */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
+
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
