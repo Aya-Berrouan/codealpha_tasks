@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Macondo+Swash+Caps&display=swap');
+
+@layer base {
+	html {
+		font-family: "Poppins", system-ui, sans-serif;
+		cursor: none; /* Hide the default cursor */
+	}
+
+	/* Remove default cursor from all clickable elements */
+	a, button, [role="button"], 
+	input[type="submit"], 
+	input[type="button"], 
+	input[type="reset"],
+	[onclick],
+	select,
+	label[for] {
+		cursor: none !important;
+	}
+
+	body {
+		@apply bg-black text-white;
+		margin: 0;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	/* Custom cursor styles */
+	.custom-cursor {
+		width: 24px;
+		height: 24px;
+		background: rgba(255, 255, 255, 0.1);
+		border: 2px solid rgba(255, 255, 255, 0.8);
+		border-radius: 50%;
+		position: fixed;
+		pointer-events: none;
+		z-index: 9999;
+		mix-blend-mode: difference;
+		transition: width 0.2s, height 0.2s, transform 0.1s;
+		transform: translate(-50%, -50%);
+		box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+	}
+
+	.custom-cursor-dot {
+		width: 6px;
+		height: 6px;
+		background: linear-gradient(45deg, #FF5AAF, #60B5FF);
+		border-radius: 50%;
+		position: fixed;
+		pointer-events: none;
+		z-index: 9999;
+		transform: translate(-50%, -50%);
+		box-shadow: 0 0 8px rgba(255, 0, 128, 0.5);
+		transition: transform 0.1s, width 0.1s, height 0.1s;
+	}
+
+	/* Click animation */
+	.custom-cursor.clicking {
+		transform: translate(-50%, -50%) scale(0.8);
+		background: rgba(255, 81, 167, 0.5);
+		border-color: #FF5AAF;
+		box-shadow: 0 0 15px rgba(255, 81, 167, 0.5);
+	}
+
+	.custom-cursor-dot.clicking {
+		transform: translate(-50%, -50%) scale(1.5);
+		background: linear-gradient(45deg, #FF5AAF, #FF5AAF);
+		box-shadow: 0 0 12px #FF5AAF;
+	}
+
+	/* Hover effect */
+	a:hover ~ .custom-cursor,
+	button:hover ~ .custom-cursor {
+		width: 40px;
+		height: 40px;
+		background: rgba(255, 255, 255, 0.15);
+		border-color: #60B5FF;
+		box-shadow: 0 0 20px rgba(96, 181, 255, 0.4);
+	}
+
+	/* Hover + Click effect */
+	a:hover ~ .custom-cursor.clicking,
+	button:hover ~ .custom-cursor.clicking {
+		transform: translate(-50%, -50%) scale(0.9);
+		background: rgba(96, 181, 255, 0.2);
+		border-color: #60B5FF;
+		box-shadow: 0 0 25px rgba(96, 181, 255, 0.6);
+	}
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	@apply bg-black/50;
+}
+
+::-webkit-scrollbar-thumb {
+	@apply bg-gradient-to-b from-primary-pink to-primary-blue rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	@apply bg-gradient-to-b from-primary-blue to-primary-pink;
+}
+
+/* Custom Scrollbar for Matchmaking Lists */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #ec4899, #3b82f6);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #f472b6, #60a5fa);
+}
+
+/* Coming Soon Animations */
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes shine {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(200%);
+  }
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+    transform: translateX(-100%);
+  }
+  50% {
+    width: 100%;
+    transform: translateX(0);
+  }
+  100% {
+    width: 0%;
+    transform: translateX(100%);
+  }
+}
+
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 15s linear infinite;
+  background-size: 400% 400%;
+}
+
+.animate-shine {
+  animation: shine 3s linear infinite;
+}
+
+.animate-progress {
+  animation: progress 3s ease-in-out infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s ease-in-out infinite;
+}
